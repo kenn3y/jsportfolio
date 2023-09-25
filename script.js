@@ -4,8 +4,8 @@ const listEl = document.querySelector('.list');
 const buttonTextEl = document.querySelector('.buttonText');
 const inputEl = document.querySelector('.input')
 
+
 function fetchData(){
-  
   fetch('https://reqres.in/api/users')
     .then(res => {
         return res.json();
@@ -20,11 +20,6 @@ function fetchData(){
       });   
     };   
 
-function fetchData2(){
-//listEl.textContent =''
-//  if (buttonTextEl.textContent='Back')fetchData()
-//console.log('fetch2')
-}
 
 buttonEl.addEventListener('click',function(){
    if(buttonTextEl.textContent ==='Back') {
@@ -36,6 +31,7 @@ buttonEl.addEventListener('click',function(){
    }
     if (dataViewEl.textContent != "data overview")
     { dataViewEl.textContent = 'data overview' 
+    listEl.innerHTML = " "
     fetchData();
     buttonTextEl.innerHTML = 'Reset'
     } else location.reload();
@@ -46,9 +42,24 @@ const listClickHandler = () =>
   event.preventDefault()
   const clickValue = event.target
   const myArrayText = clickValue.textContent.split(" ")
-  //console.log('list clicked', clickValue, myArrayText[0])
-  listEl.innerHTML = `<img src="https://reqres.in/img/faces/${myArrayText[0]}-image.jpg"> <li>${myArrayText[19]}</li>`
+  console.log(myArrayText[19], myArrayText[0])
+  if(myArrayText[0]=== ''|| myArrayText[0].includes('reqres.in')){
+    listEl.innerHTML = " "
+    fetchData()
+    buttonTextEl.innerHTML = 'Reset'
+    dataViewEl.textContent = 'data overview'
+    return
+  }
+  nextDetail(myArrayText)
+}
+listEl.addEventListener('click',listClickHandler)
+
+
+const nextDetail = (myArrayText) => {
+  let myArrayDetail19 = myArrayText[19]
+  let myArrayDetail0 = myArrayText[0]
+ 
+  listEl.innerHTML = ` <img class="pic" src="https://reqres.in/img/faces/${myArrayText[0]}-image.jpg"> <li class="red">${myArrayText[19]}</li>`
   buttonTextEl.innerHTML = 'Back'
   dataViewEl.textContent = 'Details'
 }
-listEl.addEventListener('click',listClickHandler)
