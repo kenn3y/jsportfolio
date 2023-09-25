@@ -12,7 +12,7 @@ function fetchData(){
     .then(data =>  {
         console.log(data.data)  
         data.data.forEach(element => { 
-            const markup = `<li>${element.id} : ${element.first_name} 
+            const markup = `<li class="list__item">${element.id} : ${element.first_name} 
               ${element.last_name} - ${element.email}</li>`
             listEl.insertAdjacentHTML('beforeend',markup)
         });
