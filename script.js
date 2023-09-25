@@ -50,16 +50,12 @@ const listClickHandler = () =>
     dataViewEl.textContent = 'data overview'
     return
   }
-  nextDetail(myArrayText)
-}
-listEl.addEventListener('click',listClickHandler)
-
-
-const nextDetail = (myArrayText) => {
-  let myArrayDetail19 = myArrayText[19]
-  let myArrayDetail0 = myArrayText[0]
- 
   listEl.innerHTML = ` <img class="pic" src="https://reqres.in/img/faces/${myArrayText[0]}-image.jpg"> <li class="red">${myArrayText[19]}</li>`
   buttonTextEl.innerHTML = 'Back'
   dataViewEl.textContent = 'Details'
 }
+listEl.addEventListener('click',listClickHandler)
+
+
+
+
