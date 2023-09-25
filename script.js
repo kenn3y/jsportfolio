@@ -30,6 +30,8 @@ buttonEl.addEventListener('click',function(){
    if(buttonTextEl.textContent ==='Back') {
     listEl.innerHTML = " "
     fetchData()
+    dataViewEl.textContent = 'data overview'
+    buttonTextEl.innerHTML = 'Reset'
     return
    }
     if (dataViewEl.textContent != "data overview")
